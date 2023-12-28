@@ -2,8 +2,17 @@
 import random
 
 class environ():
-
+    #---------------------------------------------------------------
+    # A class to manage the environment for a tile. A tile can have
+    # one of 3 types of environment:
+    # 0 - Grass
+    # 1 - Forest
+    # 2 - Mountains
+    # Which environment is chosen for a tile is randomly chosen but
+    # the chance is impacted by the surrounding tiles.
+    #---------------------------------------------------------------
     def __init__(self, enviro_list: list = [0,0,0]) -> None:
+
         __environ_rand = random.random()
         
         __grass_value = (1 + enviro_list[0]) ** enviro_list[0]
@@ -19,4 +28,4 @@ class environ():
             self.environ = 1
 
     def get_enviro(self):
-        return self.enviro
+        return self.environ

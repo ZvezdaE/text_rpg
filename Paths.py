@@ -18,7 +18,7 @@ class paths():
         __key = ~exclude_list & __key
         self.paths = decompose(__key,8)
 
-    def get_paths(self):
+    def get_paths(self) -> list:
         return self.paths
     
     
