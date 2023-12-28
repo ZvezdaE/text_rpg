@@ -12,16 +12,37 @@ class tile(paths, environ):
         environ.__init__(self, enviro_list)
 
         self.town = 0
-
+        
+        if travel > 97:
+            travel = 97
+        
         if random.random() > 0.97 - (travel/100):
             self.town = 1
 
     def get_town(self) -> int:
+
         return self.town
 
     def get_enviro(self) -> int:
-        return environ.get_enviro(self)
+        
+        return super().get_enviro()
     
     def get_paths(self) -> list:
-        return paths.get_paths(self)
+        
+        return super().get_paths()
+    
+    def get_tile_description(self) -> str:
+        __environ = self.get_enviro_text()
+        __paths = self.get_path_text()
+        __town = self.__town_text()
+
+        return __environ + "\n" + __paths + "\n" + __town
+    
+    def __town_text(self) -> str:
+
+        if self.town:
+            return "You see a small town in the distance."
+        else:
+            return ""
+        
     

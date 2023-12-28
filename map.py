@@ -8,33 +8,21 @@ from tile import tile
 class map:
 
     def __init__(self):
-        #---------------------------------------------------------------
-        # Initialise the map at point 0,0, create the map dictionary for
-        # holding the coordinates and tile details of the discovered 
-        # tiles and generate the first tile.
-        #---------------------------------------------------------------
+        
         __initial_point = point(0,0)
         self.map_dict = {__initial_point : tile(__initial_point)}
 
     def get_tile(self, tile_loc: point):
-        #---------------------------------------------------------------
-        # Return the tile object for the location provided
-        #---------------------------------------------------------------
+        
         return self.map_dict[tile_loc]
     
     def add_tile(self, tile_loc: point) -> None:
-        #---------------------------------------------------------------
-        # add a tile to the map dictionary if the coordinates provided
-        # have not already been added to the dictionary
-        #---------------------------------------------------------------
+        
         if not self.check_tile(tile_loc):
             self.map_dict[tile_loc] = tile(tile_loc)
 
     def check_tile(self, tile_loc : point) -> bool:
-        #---------------------------------------------------------------
-        # Check the provided coordinates in the dictionary and return
-        # a boolean value for the status
-        #---------------------------------------------------------------
+        
         return tile_loc in self.map_dict
     
     def __surrounding_tiles(self, tile_loc : point):
