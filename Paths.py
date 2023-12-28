@@ -21,4 +21,5 @@ class paths():
     def get_paths(self) -> list:
         return self.paths
     
-    
+    def set_paths(self, path_list: int) -> None:
+        self.paths = decompose(path_list)

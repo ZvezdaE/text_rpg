@@ -29,3 +29,6 @@ class environ():
 
     def get_enviro(self):
         return self.environ
+    
+    def set_environ(self, enviro: int) -> None:
+        self.environ = enviro

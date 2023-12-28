@@ -5,6 +5,6 @@ from data_types import point
 from Paths import paths
 
 
-z = tile( 0, 15, 0, )
+z = tile(0, 15, 0, )
 
 print(z.get_paths(), z.get_enviro(), z.get_town())
