@@ -12,8 +12,10 @@ class paths():
 # 4 is East
 # 8 is South
 #----------------------------------------------------------------
-    def __init__(self, path_list = [0,0,0,0]):
+    def __init__(self, path_list: int = 0 , exclude_list : int = 0) -> None:
         __key = random.randint(1,14)
+        __key = __key | path_list
+        __key = ~exclude_list & __key
         self.paths = decompose(__key,8)
 
     def get_paths(self):

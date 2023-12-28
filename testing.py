@@ -1,16 +1,12 @@
 from tile import tile
 from functions import decompose
 from functions import reverse_paths
+from data_types import point
 
-#x = tile_element()
 
-#print(x.get_paths())
-
-x = tile()
-
-print(x.get_paths())
-print(x.get_enviro())
-
-z = x.get_tile
-
-print(z)
+x = 4
+a = 1
+y = 10
+print(decompose(x))
+z = ~y & x
+print(decompose(z))

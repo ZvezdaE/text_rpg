@@ -17,3 +17,9 @@ class tile(paths, environ):
 
     def get_town(self):
         return self.town
+
+    def get_enviro(self):
+        return super().get_enviro()
+    
+    def get_paths(self):
+        return super().get_paths()
