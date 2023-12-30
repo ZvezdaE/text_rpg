@@ -4,13 +4,13 @@ The main class for managing the map dictionary.
 from data_types import point
 from tile import tile
 
-
 class map:
 
     def __init__(self):
         
-        __initial_point = point(0,0)
-        self.map_dict = {__initial_point : tile(__initial_point)}
+        self.current_loc = point(0,0)
+        self.map_dict = {self.current_loc : tile()}
+        self.travel = 0
 
     def get_tile(self, tile_loc: point):
         
@@ -19,13 +19,16 @@ class map:
     def add_tile(self, tile_loc: point) -> None:
         
         if not self.check_tile(tile_loc):
-            self.map_dict[tile_loc] = tile(tile_loc)
+            self.map_dict[tile_loc] = tile(self.travel)
+
+    def set_location(self, loc: point) -> None:
+        self.current_loc = loc
 
     def check_tile(self, tile_loc : point) -> bool:
         
         return tile_loc in self.map_dict
     
-    def __surrounding_tiles(self, tile_loc : point):
+    def __surrounding_tiles(self, tile_loc : point) -> tuple[int, int, list]:
         #---------------------------------------------------------------
         # This function does a tile check on the 4 tiles surrounding a point 
         # and if there is a tile that has been generated will return the
@@ -51,3 +54,38 @@ class map:
                 __environ_list[__temp_tile.get_enviro()] + 1
 
         return __path_list, __path_exclude ,__environ_list
+    
+        def __move(self, direction : int, move_direct: point) -> str:
+
+            if direction not in self.get_tile(self.current_loc).get_paths():
+                 return "There is no path in that direction."
+            else:
+                self.current_loc += move_direct
+            
+            return None
+
+        def move_north(self):
+            if 1 not in self.get_paths():
+                return "There is no path in that direction."
+            else:
+                self.current_loc += point(0,1)
+
+                if self.check_tile(self.current_loc):
+                    return self.get_tile(self.current_loc).get_tile_description()
+                else:
+                    if self.travel <=97:
+                        self.travel += 1
+                    else:
+                        self.travel = 0
+                    self.add_tile(self.current_loc)
+
+        def move_south(self):
+            return self.__move(8, point(0,-1))
+
+        def move_east(self):
+            if 4 not in self.get_paths():
+                return "There is no path in that direction."
+
+        def move_west(self):
+            if 2 not in self.get_paths():
+                return "There is no path in that direction."

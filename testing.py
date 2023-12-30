@@ -5,15 +5,6 @@ from functions import reverse_paths
 from data_types import point
 from Paths import paths
 
-z = tile()
+z = [1, 2, 3]
 
-print(z.get_paths())
-print(z.get_enviro())
-print(z.get_enviro_text())
-
-z.set_paths(6)
-z.set_environ(2)
-
-print(z.get_paths())
-print(z.get_enviro())
-print(z.get_enviro_text())
+print(1 not in z)
