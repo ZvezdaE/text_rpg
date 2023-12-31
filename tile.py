@@ -9,6 +9,11 @@ class tile(paths, environ):
     def __init__(self,  travel: int = 0, path_list: int = 0, exclude_list: int = 0, 
                  enviro_list: list = [0,0,0]) -> None:
         paths.__init__(self, path_list, exclude_list)
+        #print("Tile Path List: ", decompose(path_list))
+        #print("Tile Exclude", decompose(exclude_list))
+        #print("Environ List: ", enviro_list)
+        #print("Paths: ", self.paths)
+        #print("Travel: ", travel)
         environ.__init__(self, enviro_list)
 
         self.town = 0

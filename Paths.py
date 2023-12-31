@@ -2,6 +2,7 @@
 from data_types import point
 import random
 from functions import decompose
+from functions import base_2_direction
 
 class paths():
 #---------------------------------------------------------------
@@ -13,7 +14,8 @@ class paths():
 # 8 is South
 #----------------------------------------------------------------
     def __init__(self, path_list: int = 0 , exclude_list : int = 0) -> None:
-        __key = random.randint(1,14)
+        __key = random.randint(1,15)
+        #print("Paths Rolled: ", decompose(__key))
         __key = __key | path_list
         __key = ~exclude_list & __key
         self.paths = decompose(__key,8)
@@ -28,7 +30,7 @@ class paths():
 
         __path_names = []
         for x in self.paths:
-            __path_names.append(self.__path_direction(x))
+            __path_names.append(base_2_direction(x))
         if len(self.paths) == 1:
             __path_string = "There is a path heading to the " + __path_names[0]
         else:
@@ -43,15 +45,3 @@ class paths():
                     __path_string += ", "
         
         return __path_string
-
-
-    def __path_direction(self, direct) -> str:
-        """Transform the path int into text."""
-        if direct == 1:
-            return "North"
-        if direct == 2:
-            return "West"
-        if direct == 4:
-            return "East"
-        if direct == 8:
-            return "South"
