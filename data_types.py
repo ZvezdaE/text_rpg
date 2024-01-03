@@ -8,7 +8,7 @@ from functions import decompose
 '''
 A class to manage the location(point) on the grid
 '''    
-class point(object):
+class point():
     def __init__(self, x: int = 0, y: int = 0) -> None:
         """Create a point object with the provided coordinates."""
         self.__x = x

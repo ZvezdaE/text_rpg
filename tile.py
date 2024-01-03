@@ -19,6 +19,13 @@ class tile(paths, environ):
         if random.random() > 0.97 - (travel/100):
             self.town = 1
 
+    def __str__(self) -> str:
+        __environ = self.get_enviro_text()
+        __paths = self.get_path_text()
+        __town = self.__town_text()
+
+        return __environ + "\n" + __paths + "\n" + __town
+    
     def get_town(self) -> int:
 
         return self.town

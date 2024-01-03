@@ -55,37 +55,37 @@ class map:
 
         return __path_list, __path_exclude ,__environ_list
     
-        def __move(self, direction : int, move_direct: point) -> str:
+    def __move(self, direction : int, move_direct: point) -> str:
 
-            if direction not in self.get_tile(self.current_loc).get_paths():
-                 return "There is no path in that direction."
-            else:
-                self.current_loc += move_direct
+        if direction not in self.get_tile(self.current_loc).get_paths():
+            return "There is no path in that direction."
+        else:
+            self.current_loc += move_direct
             
-            return None
+        return None
 
-        def move_north(self):
-            if 1 not in self.get_paths():
-                return "There is no path in that direction."
+    def move_north(self):
+        if 1 not in self.get_paths():
+            return "There is no path in that direction."
+        else:
+            self.current_loc += point(0,1)
+
+            if self.check_tile(self.current_loc):
+                return self.get_tile(self.current_loc).get_tile_description()
             else:
-                self.current_loc += point(0,1)
-
-                if self.check_tile(self.current_loc):
-                    return self.get_tile(self.current_loc).get_tile_description()
+                if self.travel <=97:
+                    self.travel += 1
                 else:
-                    if self.travel <=97:
-                        self.travel += 1
-                    else:
-                        self.travel = 0
-                    self.add_tile(self.current_loc)
+                    self.travel = 0
+                self.add_tile(self.current_loc)
 
-        def move_south(self):
-            return self.__move(8, point(0,-1))
+    def move_south(self):
+        return self.__move(8, point(0,-1))
 
-        def move_east(self):
-            if 4 not in self.get_paths():
-                return "There is no path in that direction."
+    def move_east(self):
+        if 4 not in self.get_paths():
+            return "There is no path in that direction."
 
-        def move_west(self):
-            if 2 not in self.get_paths():
-                return "There is no path in that direction."
+    def move_west(self):
+        if 2 not in self.get_paths():
+            return "There is no path in that direction."
