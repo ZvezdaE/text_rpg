@@ -9,8 +9,20 @@ def decompose(x: int, divider: int = 8) -> list:
         divider = divider / 2
     return __number_list
 
-def reverse_paths(x: int) -> int:
+def reverse_paths(x: int, bitSize: int = 4) -> int:
     __binary = bin(x)
     __reverse = __binary[-1:1:-1]
+    __reverse = __reverse + (bitSize - len(__reverse))*'0'
 
     return int(__reverse,2)
+
+def base_2_direction(direction: int) -> str:
+        """Transform the path int into text."""
+        if direction == 1:
+            return "North"
+        if direction == 2:
+            return "West"
+        if direction == 4:
+            return "East"
+        if direction == 8:
+            return "South"

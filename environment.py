@@ -37,8 +37,8 @@ class environ():
     def get_enviro_text(self) -> str:
         
         if self.environ == 0:
-            return "you are standing on a grassy plain."
+            return "You are standing on a grassy plain."
         if self.environ == 1:
-            return "you are standing in a dark forest."
+            return "You are standing in a dark forest."
         if self.environ == 2:
-            return "you are standing amoung mighty mountains."
+            return "You are standing amoung mighty mountains."
