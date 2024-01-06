@@ -46,6 +46,7 @@ class map():
         #---------------------------------------------------------------
         
         __shift_list = [point(0,1), point(-1,0), point(1,0), point(0,-1)]
+        __environ_extra_loc = [point(1,1), point(-1,1), point(1,-1), point(-1,-1)]
         __lookup_list = [8,4,2,1]
         __path_list = 0
         __path_exclude = 0
@@ -57,14 +58,17 @@ class map():
                 __temp_tile = self.get_tile(__temp_loc)
 
                 if __lookup_list[__x] in __temp_tile.get_paths():
-                    #print("Path Found:", base_2_direction(__lookup_list[__x]))
                     __path_list += __lookup_list[__x]
                 else:
                     __path_exclude += __lookup_list[__x]
                 __environ_list[__temp_tile.get_enviro()] += 1
-            #print("Normal Path List: ", __path_list)
-            #print("reverse Path LIst: ", reverse_paths(__path_list))
 
+        for __x in range(len(__environ_extra_loc)):
+            __temp_loc = tile_loc + __shift_list[__x]
+            if self.check_tile(__temp_loc):
+                __environ_list[__temp_tile.get_enviro()] += 1
+
+        print("Environment list: ", __environ_list)
         return reverse_paths(__path_list), reverse_paths(__path_exclude) ,__environ_list
     
     def __move(self, direction : int, move_direct: point) -> str:
