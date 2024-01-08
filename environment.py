@@ -1,7 +1,7 @@
 
 import random
 
-class environ():
+class Environ():
     #---------------------------------------------------------------
     # A class to manage the environment for a tile. A tile can have
     # one of 3 types of environment:
@@ -13,15 +13,15 @@ class environ():
     #---------------------------------------------------------------
     def __init__(self, enviro_list: list = [0,0,0]) -> None:
         
-        __grass_value = (1 + enviro_list[0]) ** enviro_list[0]
-        __forest_value = (1 + enviro_list[1]) ** enviro_list[1]
-        __mount_value = (1 + enviro_list[2]) ** enviro_list[2]
-        __total_env = __grass_value + __forest_value + __mount_value
-        __environ_rand = random.random()
+        grass_value = (1 + enviro_list[0]) ** enviro_list[0]
+        forest_value = (1 + enviro_list[1]) ** enviro_list[1]
+        mount_value = (1 + enviro_list[2]) ** enviro_list[2]
+        total_env = grass_value + forest_value + mount_value
+        environ_rand = random.random()
 
-        if __environ_rand < __grass_value/__total_env:
+        if environ_rand < grass_value/total_env:
             self.environ = 0
-        elif __environ_rand > 1 - __mount_value/__total_env:
+        elif environ_rand > 1 - mount_value/total_env:
             self.environ = 2
         else:
             self.environ = 1
