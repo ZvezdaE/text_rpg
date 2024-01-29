@@ -48,15 +48,15 @@ class point():
 
     def __add__(self, other_point: "point") -> "point":
         """Add x and y values to the point"""
-        other_point.__x = self.x + other_point.__x
-        other_point.__y = self.y + other_point.__y
+        other_point.x = self.x + other_point.x
+        other_point.y = self.y + other_point.y
 
         return other_point
 
     def __sub__(self, other_point: "point") -> "point":
         """Subtract x and y values from the point"""
-        other_point.__x = self.x - other_point.__x
-        other_point.__y = self.y - other_point.__y
+        other_point.x = self.x - other_point.x
+        other_point.y = self.y - other_point.y
 
         return other_point
 
